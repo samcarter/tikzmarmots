@@ -52,7 +52,7 @@
 \addtokomafont{author}{\normalsize}
 \setlength{\footnotemargin}{0.7em}
 
-\lstdefinestyle{duckstyle}{%
+\lstdefinestyle{marmotstyle}{%
 	language={[latex]TeX},
 	tabsize=2,
 	breaklines,
@@ -75,7 +75,7 @@
 	arc=2mm,
 	fonttitle=\bfseries,
 	sidebyside,
-	listing options={style=duckstyle},
+	listing options={style=marmotstyle},
 	center lower,
 	righthand width=6.5cm,
 	bottom=0pt, 
@@ -86,14 +86,11 @@
 	},
 }
 
-\lstset{style=duckstyle}
+\lstset{style=marmotstyle}
 
-\pgfmathsetseed{1}
 \setlength{\footheight}{45pt}
-\newlength{\duckoffset}
 
 \cfoot{%
-%	\tikzset{external/export=false}%
 	\shuffleducks
 	\begin{tikzpicture}[scale=0.5] 
 		\marmot
@@ -110,7 +107,6 @@
 \subtitle{using marmots in \TikZ}
 \author{%
 	\texorpdfstring{\texttt{samcarter} (alias 
-%		\tikzset{external/export=false}%
 		\begin{tikzpicture}[scale=0.3,baseline=3pt]
 			\duck[body=yellow!50!brown!50!white,
 					longhair=red!50!brown, 
