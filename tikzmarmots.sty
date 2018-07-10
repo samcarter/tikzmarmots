@@ -12,7 +12,7 @@
 % See http://www.latex-project.org/lppl.txt
 %
 % Version 0.1
-% July 08, 2018 
+% July 10, 2018  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ProvidesPackage{tikzmarmots}
@@ -30,6 +30,7 @@
 \newif\ifmarmot@name
 \newif\ifmarmot@blush
 \newif\ifmarmot@whiskers
+\newif\ifmarmot@teeth
 
 \tikzset{
   %
@@ -47,8 +48,9 @@
   % options
   %
   blush/.code		     = \marmot@blushtrue,
-  whiskers/.code     = \marmot@whiskerstrue \def\marmot@whiskers{#1} ,
+  whiskers/.code     = \marmot@whiskerstrue \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
+  teeth/.code        = \marmot@teethtrue,
 }
 
 \def\marmot@draw{%
@@ -99,10 +101,6 @@
 % Mouth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \draw[\marmot@body!50!black] (1.07,1.51) arc [start angle=-20, end angle=-160, radius=0.16];
 %
-% Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\draw[very thin,fill=white] (0.88,1.41) -- (0.88,1.38) to[out=-5,in=-175] (0.97,1.38) -- (0.97,1.41) to[out=-170,in=-10] cycle;
-\draw[very thin] (0.925,1.405) -- (0.925,1.38);
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % optional
@@ -120,6 +118,12 @@
 	\foreach \X in {10,20,33}{%
 		\filldraw[line width=0pt,\marmot@whiskers] (0.925,1.6) + (\X:0.08) to[out=\X,in={180-\X}] ++({\X-20}:0.3) --++(0,0.005) to[out={180-\X},in=\X] cycle (0.925,1.6) + ({180-\X}:0.08) to[out={180-\X},in=\X] ++({200-\X}:0.3) --++(0,0.005) to[out=\X,in={180-\X}] cycle;
 	}
+\fi
+%
+% Teeth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifmarmot@teeth
+	\draw[very thin,fill=white] (0.88,1.41) -- (0.88,1.38) to[out=-5,in=-175] (0.97,1.38) -- (0.97,1.41) to[out=-170,in=-10] cycle;
+	\draw[very thin] (0.925,1.405) -- (0.925,1.38);
 \fi
 %
 }

@@ -11,7 +11,7 @@
 % See http://www.latex-project.org/lppl.txt
 %
 % Version 0.1
-% July 08, 2018  
+% July 10, 2018  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[parskip=half]{scrartcl}
@@ -60,7 +60,7 @@
 	commentstyle={\color{green!50!black}\slshape}, 
 	columns=fullflexible,
 	emphstyle=\color{orange!70!black},
-	emph=[1]{body,name,blush,whiskers,invisible,cake,crown},
+	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth},
 	texcsstyle=*\color{duckblue}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
@@ -91,7 +91,6 @@
 \setlength{\footheight}{45pt}
 
 \cfoot{%
-	\shuffleducks
 	\begin{tikzpicture}[scale=0.5] 
 		\marmot
 		\duck[invisible,signpost=\scalebox{0.6}{\thepage}]
@@ -100,7 +99,6 @@
 \pagestyle{scrheadings}
 %\indexsetup{firstpagestyle=scrheadings}
 %\makeindex
-
 
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzmarmots}{tikzmarmots} package}
@@ -124,7 +122,7 @@
 \section{Introduction}
 \label{intro}
 
-Inspired by the enthusiasms of the TeX.Stackexchange user \href{https://tex.stackexchange.com/users/121799/marmot}{\@ marmot} for animals of the same species, this little package can draw marmots using \TikZ.
+Inspired by the enthusiasms of the TeX.Stackexchange user \href{https://tex.stackexchange.com/users/121799/marmot}{@marmot} for animals of the same species, this little package can draw marmots using \TikZ.
 
 Unlike its older sibling, the \tikzducks package, this packages focuses on drawing the marmot itself. Additional accessories are not part of the package, but can be taken from other sources.
 
@@ -182,17 +180,24 @@ They can also be used to add whiskers to the marmot:
 \begin{tikzpicture}
 	\marmot[whiskers]
 \end{tikzpicture}
-
 \begin{tikzpicture}
 	\marmot[whiskers=blue]
 \end{tikzpicture}
 \end{tcblisting}
 
-or to make it blush:
+Or to make it blush:
 
 \begin{tcblisting}{title={Blushing marmot}}
 \begin{tikzpicture}
 	\marmot[blush]
+\end{tikzpicture}
+\end{tcblisting}
+
+Some marmots even show their chisel teeth:
+
+\begin{tcblisting}{title={Chisel teeth}}
+\begin{tikzpicture}
+	\marmot[teeth]
 \end{tikzpicture}
 \end{tcblisting}
 
@@ -230,7 +235,7 @@ To make the usage easier for the \TikZ-savvy users, the marmots can also be used
     marmot/body=blue,
     marmot/blush,
   ] {marmot};
-\draw (4,0) pic[
+\draw (2,0) pic[
     scale=1.4,
   ] {marmot};
 \end{tikzpicture}
@@ -269,10 +274,10 @@ The above list of available customisations does not sound very exhaustive, but t
 %\end{tikzpicture}
 %\end{tcblisting}
 
-\section{Reusing accessories from the \tikzducks package}
+\section{Re-using accessories from the \tikzducks package}
 
 As already said in the introduction, this package focuses on the marmots themselves and does not provide additional accessories. 
-However there is no need to despair! Many of the accessories from the \tikzducks package (\url{https://www.ctan.org/pkg/tikzducks}) can be reused using the `invisible` key which will only produce the desired item without a duck.
+However there is no need to despair! Many of the accessories from the \tikzducks package (\url{https://www.ctan.org/pkg/tikzducks}) can be re-used using the \lstinline|invisible| key which will only produce the desired item without a duck.
 
 The marmots are designed to have the same height as the ducks, so many items can be adopted without any modifications. One example:
 

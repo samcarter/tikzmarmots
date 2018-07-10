@@ -1,24 +1,18 @@
 \documentclass{standalone}
 
-\usepackage{tikzmarmots}
-\usepackage{tikzducks}
+\usepackage{tikz}
+\usetikzlibrary{marmots}
 
 \begin{document}
 
 \begin{tikzpicture}
-	\marmot[body=brown!70!red,whiskers]
-\end{tikzpicture}
-
-\begin{tikzpicture}
-	\marmot[blush]
-\end{tikzpicture}
-
-\begin{tikzpicture}
-	\marmot
-	\duck[invisible,crown]
-	\begin{scope}[scale=0.7,xshift=9,yshift=18]
-		\duck[invisible,cake=red!50!violet]
-	\end{scope}
+\draw (0,0) pic[
+    marmot/body=blue,
+    marmot/blush,
+  ] {marmot};
+\draw (2,0) pic[
+    scale=1.4,
+  ] {marmot};
 \end{tikzpicture}
 
 \end{document}
