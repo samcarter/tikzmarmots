@@ -1,0 +1,20 @@
+\documentclass{standalone}
+
+\usepackage{tikzmarmots}
+\usepackage{tikzducks}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\marmot[whiskers,teeth]
+\end{tikzpicture}
+
+\begin{tikzpicture}
+	\marmot
+	\duck[invisible,crown]
+	\begin{scope}[scale=0.7,xshift=9,yshift=18]
+		\duck[invisible,cake=red!50!violet]
+	\end{scope}
+\end{tikzpicture}
+
+\end{document}
