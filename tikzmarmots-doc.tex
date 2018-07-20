@@ -153,8 +153,6 @@ The \tikzmarmots package loads \TikZ, which in turn loads the \lstinline|xcolor|
 	\PassOptionsToPackage{svgnames}{xcolor}
 \end{lstlisting}
 
-
-
 \section{Usage}
 
 The basic usage is fairly simple, to draw a marmot:
@@ -173,6 +171,8 @@ These keys can for example be used to change the marmot's colour via \lstinline|
 	\marmot[body=blue]
 \end{tikzpicture}
 \end{tcblisting}
+
+The colour of the belly and muzzle will use a lighter shade of the selected colour, while a darker shade is chosen for paws, nose and eyes.
 
 They can also be used to add whiskers to the marmot:
 
@@ -255,7 +255,6 @@ To make the usage easier for the \TikZ-savvy users, the marmots can also be used
 \end{tikzpicture}
 \end{tcolorbox}
 
-\clearpage
 \section{Further customisation}
 
 The above list of available customisations does not sound very exhaustive, but there are basically infinite possibilities for further customisation, as the marmots are just shapes in a \TikZ picture -- all the heavy weapons of the \TikZ package are thus available for further customisation.
@@ -281,13 +280,15 @@ However there is no need to despair! Many of the accessories from the \tikzducks
 
 The marmots are designed to have the same height as the ducks, so many items can be adopted without any modifications. One example:
 
-\begin{tcblisting}{title={Marmot King}}
+\addtocounter{footnote}{1}
+\begin{tcblisting}{title={Marmot Queen$^{\thefootnote}$}}
 %\usepackage{tikzducks}
 \begin{tikzpicture}
 	\marmot
 	\duck[invisible,crown]
 \end{tikzpicture}	
 \end{tcblisting}
+\footnotetext[\thefootnote]{The Marmot Queen is inspired by \href{http://www.ilregnodeifanes.it/inglese/summary.htm}{The Fanes' saga}}
 
 Unfortunately not all accessories will work. Some are entirely unsuitable (e.g. clothing which shape was specially designed for the ducks), others can be modified to fit:
 
