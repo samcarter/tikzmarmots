@@ -60,7 +60,7 @@
 	commentstyle={\color{green!50!black}\slshape}, 
 	columns=fullflexible,
 	emphstyle=\color{orange!70!black},
-	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth},
+	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth,3D},
 	texcsstyle=*\color{duckblue}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
@@ -174,7 +174,16 @@ These keys can for example be used to change the marmot's colour via \lstinline|
 
 The colour of the belly and muzzle will use a lighter shade of the selected colour, while a darker shade is chosen for paws, nose and eyes.
 
-They can also be used to add whiskers to the marmot:
+The key \lstinline|3D| will make the marmot 3-dimensional:
+
+\begin{tcblisting}{title={3D marmot}}
+\begin{tikzpicture}
+	\marmot[3D]
+\end{tikzpicture}
+\end{tcblisting}
+
+
+Keys can also be used to add whiskers to the marmot:
 
 \begin{tcblisting}{title={Whiskers}}
 \begin{tikzpicture}
@@ -201,7 +210,6 @@ Some marmots even show their chisel teeth:
 \end{tikzpicture}
 \end{tcblisting}
 
-\newpage
 If the size of the marmots should be changed or shifted:
 
 \begin{tcblisting}{title={Scaled and shifted marmots}, righthand width=3cm}
