@@ -101,9 +101,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \ifmarmot@askphil
-	\pgfmathparse{int(random(0,1))}
+	\pgfmathparse{int(random(1,120))}
 	\let\marmot@random=\pgfmathresult
-	\ifnum\marmot@random<1
+	\ifnum\marmot@random>17
 		\marmot@shadowtrue
 	\fi
 \fi
