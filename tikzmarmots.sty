@@ -19,6 +19,20 @@
  [2018/07/08 v0.1 Drawing marmots in TikZ]
 
 \RequirePackage{tikz}
+\usetikzlibrary{shadows.blur}
+
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+
+\ifluatex
+  \let\pdfrandomseed\randomseed
+\fi
+
+\ifxetex
+  \pgfmathsetseed{\time}
+\else
+  \pgfmathsetseed{\number\pdfrandomseed}
+\fi
 
 \newcommand*{\marmot}[1][]{%
 	\begin{scope}%
@@ -32,6 +46,8 @@
 \newif\ifmarmot@whiskers
 \newif\ifmarmot@teeth
 \newif\ifmarmot@threeD
+\newif\ifmarmot@shadow
+\newif\ifmarmot@askphil
 
 \tikzset{
   %
@@ -52,7 +68,10 @@
   whiskers/.code     = \marmot@whiskerstrue \def\marmot@whiskers{#1},
   whiskers/.default  = gray,
   teeth/.code        = \marmot@teethtrue, 
-  3D/.code			 = \marmot@threeDtrue,
+  3D/.code			     = \marmot@threeDtrue,
+  shadow/.code       = \marmot@shadowtrue,
+  askphil/.code      = \marmot@askphiltrue,
+  ask phil/.forward to=/marmot/askphil,
 }
 
 \def\marmot@draw{%
@@ -73,6 +92,24 @@
 	\def\marmot@part@draw##1{\shade[ball color=##1]}
 \else
 	\def\marmot@part@draw##1{\fill[##1]}
+\fi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% shadow
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\ifmarmot@askphil
+	\pgfmathparse{int(random(0,1))}
+	\let\marmot@random=\pgfmathresult
+	\ifnum\marmot@random<1
+		\marmot@shadowtrue
+	\fi
+\fi
+%
+\ifmarmot@shadow
+	\fill[opacity=0,blur shadow,rotate=-80] (-0.25,1.3) ellipse (0.28 and 0.8);
 \fi
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
