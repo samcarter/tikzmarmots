@@ -41,7 +41,6 @@
 	\end{scope}%
 }
 
-\newif\ifmarmot@name
 \newif\ifmarmot@blush
 \newif\ifmarmot@whiskers
 \newif\ifmarmot@teeth
@@ -55,7 +54,6 @@
   %
   /marmot/.search also={/tikz,/pgf},
   /marmot/.cd,
-  name/.code         = \marmot@nametrue \def\marmot@name{#1},
   %
   % body
   %
