@@ -28,13 +28,13 @@
 \usepackage[most]{tcolorbox}
 \usepackage[paper=a4paper,margin=3cm]{geometry}
 \usepackage{url}
-\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue,linkcolor=duckblue,citecolor=duckblue,filecolor=duckblue]{hyperref}
 \usepackage{xspace}
 \usepackage{scrlayer-scrpage} 
 \usepackage{marvosym}
 \usepackage{fontawesome}
 \usepackage[hang,flushmargin,bottom]{footmisc}
 \usepackage{imakeidx}
+\usepackage[colorlinks=true,breaklinks=true,urlcolor=duckblue,linkcolor=duckblue,citecolor=duckblue,filecolor=duckblue]{hyperref}
 
 % macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CTAN}{\textsc{CTAN}\xspace}
@@ -60,7 +60,7 @@
 	commentstyle={\color{green!50!black}\slshape}, 
 	columns=fullflexible,
 	emphstyle=\color{orange!70!black},
-	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth,3D},
+	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth,3D,shadow,askphil},
 	texcsstyle=*\color{duckblue}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
@@ -182,7 +182,6 @@ The key \lstinline|3D| will make the marmot 3-dimensional:
 \end{tikzpicture}
 \end{tcblisting}
 
-
 Keys can also be used to add whiskers to the marmot:
 
 \begin{tcblisting}{title={Whiskers}}
@@ -209,6 +208,23 @@ Some marmots even show their chisel teeth:
 	\marmot[teeth]
 \end{tikzpicture}
 \end{tcblisting}
+
+The marmots also can cast a shadow:
+
+\begin{tcblisting}{title={Shadow}}
+\begin{tikzpicture}
+	\marmot[shadow]
+\end{tikzpicture}
+\end{tcblisting}
+
+This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \lstinline|askphil| might or might not result in a shadow.
+
+\begin{tcblisting}{title={Ask Phil}}
+\begin{tikzpicture}
+	\marmot[askphil]
+\end{tikzpicture}
+\end{tcblisting}
+
 
 If the size of the marmots should be changed or shifted:
 
