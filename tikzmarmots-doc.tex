@@ -10,8 +10,8 @@
 % Released under the LaTeX Project Public License v1.3c or later
 % See http://www.latex-project.org/lppl.txt
 %
-% Version 0.2
-% Sep 11, 2018  
+% Version 1.0
+% Nov 8, 2018  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[parskip=half]{scrartcl}
@@ -60,7 +60,7 @@
 	commentstyle={\color{green!50!black}\slshape}, 
 	columns=fullflexible,
 	emphstyle=\color{orange!70!black},
-	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth,3D,shadow,askphil},
+	emph=[1]{body,blush,whiskers,invisible,cake,crown,teeth,3D,shadow,askphil,scale,xshift,yshift},
 	texcsstyle=*\color{duckblue}\bfseries,
 	keywordstyle=\color{red!60!black}\bfseries,
 	morekeywords={tikzpicture,scope,patterns,calc,pgfinterruptboundingbox},
@@ -113,7 +113,7 @@
 		\url{https://github.com/samcarter/tikzmarmots}\\
 		\url{https://www.ctan.org/pkg/tikzmarmots}
 	}{samcarter}}
-\date{Version 0.2 -- \today}
+\date{Version 1.0 -- \today}
 
 \begin{document}
 \maketitle
@@ -236,15 +236,9 @@ If the size of the marmots should be changed or shifted:
 \begin{tcblisting}{title={Scaled and shifted marmots}, righthand width=3cm}
 \begin{tikzpicture}[scale=0.6]
 	\marmot
-	\begin{scope}[xshift=90pt, scale=.5, yshift=150pt]
-		\marmot[body=brown!80!gray]
-	\end{scope}
-	\begin{scope}[xshift=60pt, scale=.5, yshift=100pt]
-		\marmot[body=brown!80!yellow]
-	\end{scope}
-	\begin{scope}[xshift=80pt, scale=.5, yshift=50pt]
-		\marmot[body=brown!80!red]
-	\end{scope}		
+	\marmot[xshift=90pt, scale=.5, yshift=150pt,body=brown!80!gray]
+	\marmot[xshift=60pt, scale=.5, yshift=100pt,body=brown!80!yellow]
+	\marmot[xshift=80pt, scale=.5, yshift=50pt,body=brown!80!red]	
 \end{tikzpicture}
 \end{tcblisting}
 
@@ -325,9 +319,7 @@ Unfortunately not all accessories will work. Some are entirely unsuitable (e.g. 
 %\usepackage{tikzducks}
 \begin{tikzpicture}
 	\marmot
-	\begin{scope}[scale=0.7,xshift=9,yshift=18]
-		\duck[invisible,cake=red!50!violet]
-	\end{scope}
+	\duck[invisible, cake=red!50!violet, scale=0.7, xshift=9, yshift=18]
 \end{tikzpicture}	
 \end{tcblisting}
 
