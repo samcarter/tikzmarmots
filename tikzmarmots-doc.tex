@@ -10,8 +10,8 @@
 % Released under the LaTeX Project Public License v1.3c or later
 % See http://www.latex-project.org/lppl.txt
 %
-% Version 1.0
-% Nov 8, 2018
+% Version 2.0
+% Apr 17, 2024
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !TeX program = txs:///arara
@@ -37,7 +37,7 @@
     \url{https://github.com/samcarter/tikzmarmots}\\
     \url{https://www.ctan.org/pkg/tikzmarmots}
   }{samcarter}}
-\date{Version 1.0 -- \today}
+\date{Version 2.0 -- \today}
 
 \usepackage[
   themecolor=sammagenta
@@ -49,8 +49,71 @@
 \usetikzlibrary{ducks}
 \usepackage{tikzmarmots}
 \usetikzlibrary{marmots}
+\usepackage{tikzlings-addons}
 \usepackage{marvosym}
 \usepackage{fontawesome}
+
+% including commented lines from the .sty files %%%%%%%%%%%%%%%%%%%%%%
+% thanks to Phelype Oleinik https://topanswers.xyz/tex?q=1861#a2092
+\ExplSyntaxOn
+\makeatletter
+\iow_new:N \l__tikzlings_iow
+\tl_new:N \l__tikzlings_file_name_tl
+\NewDocumentCommand \CommentInput { m }
+  { \tikzlings_comment_input:n {#1} }
+\cs_new_protected:Npn \tikzlings_comment_input:n #1
+  {
+    \file_get_full_name:nNTF {#1} \l__tikzlings_file_name_tl
+      { \__tikzlings_comment_input: }
+      { \msg_error:nnn { tikzlings } { file-not-found } {#1} }
+  }
+\msg_new:nnn { tikzlings } { file-not-found } { File~'#1'~not~found. }
+\cs_new_protected:Npn \__tikzlings_comment_input:
+  {
+    \group_begin:
+      \cctab_select:N \c_other_cctab
+      \int_set:Nn \tex_endlinechar:D { `\^^M }
+      \use:x { \tex_everyeof:D { \exp_not:N \q_nil \char_generate:nn { 13 } { 13 } } }
+      \char_set_active_eq:NN \^^M \__tikzlings_process_line:w
+      \char_set_catcode_active:N \^^M
+      \iow_open:Nn \l__tikzlings_iow { \c_sys_jobname_str . cif } % cif => comment input file
+      \exp_after:wN \__tikzlings_process_line:w
+        \tex_input:D { \l__tikzlings_file_name_tl }
+      \iow_close:N \l__tikzlings_iow
+    \group_end:
+    \declare@file@substitution { \l__tikzlings_file_name_tl } { \c_sys_jobname_str . cif }
+    \input { \l__tikzlings_file_name_tl }
+    \undeclare@file@substitution { \l__tikzlings_file_name_tl }
+  }
+\group_begin:
+\char_set_catcode_active:N \^^M
+\char_set_active_eq:NN \^^M \scan_stop:
+\cs_new_protected:Npx \__tikzlings_process_line:w #1 ^^M
+  { \exp_not:N \__tikzlings_parse_line:w ^^M #1 ^^M \c_percent_str \s_stop }
+\cs_set_protected:Npn \__tikzlings_tmp:w #1
+  {
+    \cs_new_protected:Npn \__tikzlings_parse_line:w ##1 ^^M #1 ##2 \s_stop
+      {
+        \tl_if_empty:nTF {##1}
+          {
+            \peek_charcode_remove:NTF #1
+              { \__tikzlings_ignore_line:w }
+              { \__tikzlings_output_line:w }
+            ##2 \s_stop ^^M
+          }
+          {
+            \tl_set:Nx \l_tmpa_tl { \tl_tail:n {##1} }
+            \tl_if_eq:NNF \l_tmpa_tl \q_nil { ^^M }
+          }
+      }
+    \cs_new_protected:Npn \__tikzlings_output_line:w ##1 ^^M #1 \s_stop
+      { \iow_now:Nn \l__tikzlings_iow {##1} }
+    \cs_new_protected:Npn \__tikzlings_ignore_line:w ##1 \s_stop { }
+  }
+\exp_args:No \__tikzlings_tmp:w { \c_percent_str }
+\group_end:
+\makeatother
+\ExplSyntaxOff
 
 % customisation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\footnotemargin}{0.7em}
@@ -59,7 +122,7 @@
 \cfoot{%
   \begin{tikzpicture}[scale=0.5] 
     \marmot
-    \duck[invisible,signpost=\scalebox{0.6}{\thepage}]
+    \thing[scale=0.8,signpost=\scalebox{0.6}{\thepage}]
   \end{tikzpicture}
 }
 \pagestyle{scrheadings}
@@ -69,7 +132,9 @@
 \thispagestyle{scrheadings}
 
 \begin{tcolorbox}[coltext=themecolor,width=.8\textwidth,center,sidebyside=false,bottom=10pt,top=10pt]
-The \tikzmarmots package was merged into the Ti\emph{k}Zlings package. To get an up-to-date version, please load the \saminline|tikzlings-marmots| or the more general \saminline|tikzlings| package instead.
+The \tikzmarmots package was merged into the Ti\emph{k}Zlings package and, starting with version 2.0, is now a wrapper around the \saminline|tikzlings-marmots| package. 
+
+To access the previous version, use \saminline|\usepackage{tikzmarmots}[v1]|.
 \end{tcolorbox}
 
 
@@ -89,77 +154,10 @@ Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
 
 The shown example marmots are purely fictional characters, any resemblance to real marmots or persons is purely coincidental and no copyright infringement is intended.
 
-\section{Usage}
-
-The basic usage is fairly simple, to draw a marmot:
-\begin{tcblisting}{title={Basic marmot}}
-\begin{tikzpicture}
-  \marmot
-\end{tikzpicture}
-\end{tcblisting}
-
-To customise this basic marmot, the package uses \saminline|pgf| keys. 
-
-These keys can for example be used to change the marmot's colour via \saminline|body=<colour name>|. 
-
-\begin{tcblisting}{title={Blue marmot}}
-\begin{tikzpicture}
-  \marmot[body=blue]
-\end{tikzpicture}
-\end{tcblisting}
-
-The colour of the belly and muzzle will use a lighter shade of the selected colour, while a darker shade is chosen for paws, nose and eyes.
-
-The key \saminline|3D| will make the marmot 3-dimensional:
-
-\begin{tcblisting}{title={3D marmot}}
-\begin{tikzpicture}
-  \marmot[3D]
-\end{tikzpicture}
-\end{tcblisting}
-
-Keys can also be used to add whiskers to the marmot:
-
-\begin{tcblisting}{title={Whiskers}}
-\begin{tikzpicture}
-  \marmot[whiskers]
-\end{tikzpicture}
-\begin{tikzpicture}
-  \marmot[whiskers=blue]
-\end{tikzpicture}
-\end{tcblisting}
-
-Or to make it blush:
-
-\begin{tcblisting}{title={Blushing marmot}}
-\begin{tikzpicture}
-  \marmot[blush]
-\end{tikzpicture}
-\end{tcblisting}
-
-Some marmots even show their chisel teeth:
-
-\begin{tcblisting}{title={Chisel teeth}}
-\begin{tikzpicture}
-  \marmot[teeth]
-\end{tikzpicture}
-\end{tcblisting}
-
-The marmots also can cast a shadow:
-
-\begin{tcblisting}{title={Shadow}}
-\begin{tikzpicture}
-  \marmot[shadow]
-\end{tikzpicture}
-\end{tcblisting}
-
-This ability is important if you want to ask Punxsutawney Phil\footnote{\url{https://en.wikipedia.org/wiki/Punxsutawney_Phil}} on Groundhog Day how the weather is going to be. With a probability derived from the statistics of 120 Groundhog Days\footnote{\url{https://www.livescience.com/32974-punxsutawney-phil-weather-prediction-accuracy.html}} the option \saminline|askphil| might or might not result in a shadow.
-
-\begin{tcblisting}{title={Ask Phil}}
-\begin{tikzpicture}
-  \marmot[askphil]
-\end{tikzpicture}
-\end{tcblisting}
+\begingroup
+  \tcbset{tikz lower}
+  \CommentInput{tikzlings-marmots.sty}
+\endgroup
 
 If the size of the marmots should be changed or shifted:
 
@@ -218,7 +216,7 @@ The above list of available customisations does not sound very exhaustive, but t
 \begin{tcblisting}{title={Adding things to the marmot}}
 \begin{tikzpicture}
   \marmot
-  \fill[blue] (2,0) rectangle (1,1);
+  \fill[blue] (0,0) rectangle (1,1);
 \end{tikzpicture}
 \end{tcblisting}
 
@@ -229,35 +227,31 @@ The above list of available customisations does not sound very exhaustive, but t
 %\end{tikzpicture}
 %\end{tcblisting}
 
-\section{Re-using accessories from the \tikzducks package}
+\section{Re-using accessories from the \tikzlings package}
 
 As already said in the introduction, this package focuses on the marmots themselves and does not provide additional accessories. 
-However there is no need to despair! Many of the accessories from the \tikzducks package (\url{https://www.ctan.org/pkg/tikzducks}) can be re-used using the \saminline|invisible| key which will only produce the desired item without a duck.
-
-The marmots are designed to have the same height as the ducks, so many items can be adopted without any modifications. One example:
+However there is no need to despair! There are many accessories available from the \saminline|tikzlings-addons| package (\url{https://www.ctan.org/pkg/tikzlings}). 
 
 \addtocounter{footnote}{1}
 \begin{tcblisting}{title={Marmot Queen$^{\thefootnote}$}}
-%\usepackage{tikzducks}
+%\usepackage{tikzlings-addons}
 \begin{tikzpicture}
   \marmot
-  \duck[invisible,crown]
+  \thing[crown]
 \end{tikzpicture}
 \end{tcblisting}
 \footnotetext[\thefootnote]{The Marmot Queen is inspired by \href{http://www.ilregnodeifanes.it/inglese/summary.htm}{The Fanes' saga}}
 
-Unfortunately not all accessories will work. Some are entirely unsuitable (e.g. clothing which shape was specially designed for the ducks), others can be modified to fit:
-
+The items can be modified with the usual \TikZ keys and come with additional options. Here one example:
 \begin{tcblisting}{title={Happy Birthday!}}
-%\usepackage{tikzducks}
+%\usepackage{tikzlings-addons}
 \begin{tikzpicture}
   \marmot
-  \duck[invisible, cake=red!50!violet,
-        scale=0.7, xshift=9, yshift=18]
+  \thing[cake=red!50!violet,
+         scale=1.2]
 \end{tikzpicture}
 \end{tcblisting}
 
-For a complete list of available accessories, please see the documentation of the \tikzducks package 
-(\url{https://mirrors.ctan.org/graphics/pgf/contrib/tikzducks/tikzducks-doc.pdf}).
+ Please consult the \href{http://mirrors.ctan.org/graphics/pgf/contrib/tikzlings/tikzlings-doc.pdf}{\tikzlings package documentation} for an exhaustive list of options.
 
 \end{document}
