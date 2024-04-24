@@ -16,7 +16,7 @@ The project repository, including a bug tracker, can be found at https://github.
 
 ### Usage
 
-``````
+```latex
 \documentclass{standalone}
 \usepackage{tikzmarmots}
 
@@ -27,6 +27,6 @@ The project repository, including a bug tracker, can be found at https://github.
 \end{tikzpicture}
 
 \end{document}
-``````
+```
 
 For more details, please consult the [package documentation](https://github.com/samcarter/tikzmarmots/blob/main/documentation.pdf).
