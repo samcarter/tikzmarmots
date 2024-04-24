@@ -4,6 +4,15 @@
 
 ### New
 
+### Changed
+
+### Fixed
+
+
+## [v2.1]
+
+### New
+
 - added DEPENDS.txt file
 
 ## [v2.0]
@@ -33,7 +42,8 @@ new TikZlings package.
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzmarmots/compare/v2.0...HEAD
+[Unreleased]: https://github.com/samcarter/tikzmarmots/compare/v2.1...HEAD
+[v2.1]: https://github.com/samcarter/tikzmarmots/compare/v2.0...v2.1
 [v2.0]: https://github.com/samcarter/tikzmarmots/compare/v1.0...v2.0
 [v1.0]: https://github.com/samcarter/tikzmarmots/compare/v0.1...v1.0
 [v0.1]: https://github.com/samcarter/tikzmarmots/compare/v0.0...v0.1
