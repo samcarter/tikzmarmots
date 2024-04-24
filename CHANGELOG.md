@@ -4,9 +4,7 @@
 
 ### New
 
-### Changed
-
-### Fixed
+- added DEPENDS.txt file
 
 ## [v2.0]
 
