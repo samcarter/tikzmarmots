@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/samcarter/tikzmarmots/main/ICON.png)
 
-# Tikzmarmots
+# TikZmarmots
 
 [![GitHub](https://img.shields.io/github/license/samcarter/tikzmarmots.svg?color=blue)](http://www.latex-project.org/lppl.txt)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samcarter/tikzmarmots.svg?label=current%20version)](https://github.com/samcarter/tikzmarmots/releases/latest)
