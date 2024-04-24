@@ -1,0 +1,16 @@
+#!/usr/bin/env texlua
+-- Execute with ======================================================
+-- l3build tag
+-- l3build ctan
+-- <check announcement.txt and format if necessary>
+-- l3build upload
+-- l3build clean
+
+-- Settings ==========================================================
+module = "tikzmarmots"
+ctanpkg = "tikzmarmots"
+ctanprefix = "/graphics/pgf/contrib/" 
+ctansummary = "A small LaTeX package to draw marmots with TikZ"
+
+-- common settings =============================================================
+local common_settings, build_settings = pcall(require, "../beamertheme-sam/build-settings.lua")
