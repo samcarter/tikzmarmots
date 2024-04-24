@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/samcarter/tikzmarmots/main/icon.png)
+![](https://raw.githubusercontent.com/samcarter/tikzmarmots/main/ICON.png)
 
 # Tikzmarmots
 
