@@ -1,20 +1,18 @@
+% !TeX program = arara -p generate_examples % | txs:///view-log | txs:///view-pdf "?am).pdf"
 \documentclass{standalone}
 
 \usepackage{tikzmarmots}
-\usepackage{tikzducks}
+\usepackage{tikzlings-addons}
 
 \begin{document}
 
 \begin{tikzpicture}
-	\marmot[whiskers,teeth]
+  \marmot[whiskers,teeth]
 \end{tikzpicture}
 
 \begin{tikzpicture}
-	\marmot
-	\duck[invisible,crown]
-	\begin{scope}[scale=0.7,xshift=9,yshift=18]
-		\duck[invisible,cake=red!50!violet]
-	\end{scope}
+  \marmot
+  \thing[crown,cake=red!50!violet]
 \end{tikzpicture}
 
 \end{document}
