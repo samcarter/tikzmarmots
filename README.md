@@ -2,9 +2,9 @@
 
 # TikZmarmots
 
-[![GitHub](https://img.shields.io/github/license/samcarter/tikzmarmots.svg?color=blue)](http://www.latex-project.org/lppl.txt)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/samcarter/tikzmarmots.svg?label=current%20version)](https://github.com/samcarter/tikzmarmots/releases/latest)
-[![CTAN](https://img.shields.io/ctan/v/tikzmarmots.svg)](https://ctan.org/pkg/tikzmarmots)
+[![License](https://img.shields.io/github/license/samcarter/tikzmarmots.svg?color=blue)](http://www.latex-project.org/lppl.txt)
+[![GitHub tag](https://img.shields.io/github/tag/samcarter/tikzmarmots.svg?label=current%20version&color=blue)](https://github.com/samcarter/tikzmarmots/releases/latest)
+[![CTAN](https://img.shields.io/ctan/v/tikzmarmots.svg?color=blue)](https://ctan.org/pkg/tikzmarmots)
 
 This is a little LaTeX package to draw marmots with TikZ. 
 
