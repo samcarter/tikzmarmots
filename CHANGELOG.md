@@ -9,6 +9,17 @@
 ### Fixed
 
 
+## [v2.2]
+
+### New
+
+### Changed
+
+- doc: added titles
+
+### Fixed
+
+
 ## [v2.1]
 
 ### New
@@ -42,7 +53,8 @@ new TikZlings package.
 
 ------
 
-[Unreleased]: https://github.com/samcarter/tikzmarmots/compare/v2.1...HEAD
+[Unreleased]: https://github.com/samcarter/tikzmarmots/compare/v2.2...HEAD
+[v2.2]: https://github.com/samcarter/tikzmarmots/compare/v2.1...v2.2
 [v2.1]: https://github.com/samcarter/tikzmarmots/compare/v2.0...v2.1
 [v2.0]: https://github.com/samcarter/tikzmarmots/compare/v1.0...v2.0
 [v1.0]: https://github.com/samcarter/tikzmarmots/compare/v0.1...v1.0
