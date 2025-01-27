@@ -14,6 +14,11 @@
 % arara: latexmk
 \documentclass{scrartcl}
 
+\usepackage[
+  themecolor=sammagenta
+]{\jobname-settings}
+
+
 % meta %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{The \texorpdfstring{\tikzmarmots}{tikzmarmots} package}
 \subtitle{using marmots in \TikZ}
@@ -24,16 +29,12 @@
     \end{tikzpicture}\\[0.8em]
     \texttt{samcarter}\\
     \url{https://github.com/samcarter/tikzmarmots}\\
-    \url{https://www.ctan.org/pkg/tikzmarmots}
+    \url{https://ctan.org/pkg/tikzmarmots}
   }{samcarter}}
 \date{Version v2.2 \textendash{} 2024/12/11}
-
-\usepackage[
-  themecolor=sammagenta
-]{\jobname-settings}
+\packagename{tikzmarmots}
 
 \colorlet{blue}{samlblue}
-
 \usepackage{tikzducks}
 \usetikzlibrary{ducks}
 \usepackage{tikzmarmots}
@@ -132,16 +133,7 @@ To access the previous version, use \saminline|\usepackage{tikzmarmots}[v1]|.
 
 Inspired by the enthusiasms of the TeX.Stackexchange user \href{https://tex.stackexchange.com/users/121799/marmot}{@marmot} for beings of the same species, this little package can draw marmots using \TikZ.
 
-Unlike its older sibling, the \tikzducks package, this packages focuses on drawing the marmot itself. Additional accessories are not part of the package, but can be taken from other sources.
-
-This package is work in progress, therefore I would be happy to hear your feedback and ideas how to improve the package. The head version of the source code can be found on \url{github.com/samcarter/tikzmarmots}, including a bug tracker -- please make constructive use of it!
-A more stable package version can be found on \CTAN (\url{www.ctan.org/pkg/tikzmarmots}) and is included in both \miktex and \texlive as \tikzmarmots.
-If you seek any other assistance (not bug reports/feature requests), I suggest asking on \href{https://tex.stackexchange.com}{TeX.Stackexchange}.
-
-Copyright \raisebox{0.2em}{\tiny\fontfamily{cmr}\selectfont\textcopyright}
-\texttt{samcarter}. Permission is granted to copy, distribute and\slash or modify this software under the terms of the LaTeX project public licence, version 1.3c or later \url{https://www.latex-project.org/lppl.txt}.
-
-The shown example marmots are purely fictional characters, any resemblance to real marmots or persons is purely coincidental and no copyright infringement is intended.
+\blurb
 
 \begingroup
   \tcbset{tikz lower}
